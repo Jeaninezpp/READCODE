@@ -5,8 +5,8 @@ r1=2;r2=2;r3=2;%r1,r2,r3是alpha,beta,gamma的指数
 tau=1e8;%tau是优化U的时候的参数
 alpha=cell(1,vN);beta=cell(1,vN);gamma=cell(1,vN);%alpha,beta,gamma是权衡参数
 gv=cell(1,vN);hv=cell(1,vN);fv=cell(1,vN);% cell_array=cell(m,n)创建m*n的元胞数组
-U=cell(1,vN);V=cell(1,vN);L=cell(1,vN);Xnor=cell(1,vN);%%%%%%%%%%%%%%%%%%Xnor是啥？
-Ustar=rand(N,k);%%%%%%%随机初始化一致矩阵？？
+U=cell(1,vN);V=cell(1,vN);L=cell(1,vN);Xnor=cell(1,vN);
+Ustar=rand(N,k);%%%%%%%随机初始化一致矩阵
 MaxIter=10;
 ConsenX=[];
 for vIndex=1:vN

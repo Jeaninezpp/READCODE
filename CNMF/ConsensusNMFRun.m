@@ -7,12 +7,13 @@ load(dataName);% 从dataName中加载数据,如果是MAT文件，会把变量加
 TotalSampleNo=length(Y); %% Labels of samples
 %% LPP Paras
 options = [];
-options.NeighborMode = 'KNN';
+options.NeighborMode = 'KNN';%%%%%?哪里用到的K近邻呢？
 options.k = 5;
-options.WeightMode = 'HeatKernel';
+options.WeightMode = 'HeatKernel';%%%%%热核特征HKS??
 options.t = 10;
 %%
 [U,V,Ustar,alpha,beta,gamma,ConX,obj]=ConsensusNMF(X,TotalSampleNo,kmeansK,ViewN,options);
+%输入：数据，样本数，聚类个数，视图个数，options
 Vcon=[];
 for vConIndex=1:ViewN
     Vcon=[Vcon;V{vConIndex}];
