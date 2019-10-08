@@ -34,10 +34,10 @@ return;
 
 
 if row
-    [nSmp, mFea] = size(fea);
-    if issparse(fea)
+    [nSmp, mFea] = size(fea);%获取行,列
+    if issparse(fea)%如果是稀疏矩阵
         fea2 = fea';
-        feaNorm = mynorm(fea2,1);
+        feaNorm = mynorm(fea2,1);%%%%%%%%%%%%%%%mynorm????
         for i = 1:nSmp
             fea2(:,i) = fea2(:,i) ./ max(1e-10,feaNorm(i));
         end
@@ -46,6 +46,7 @@ if row
         feaNorm = sum(fea.^2,2).^.5;
         fea = fea./feaNorm(:,ones(1,mFea));
     end
+% if not row
 else
     [mFea, nSmp] = size(fea);
     if issparse(fea)

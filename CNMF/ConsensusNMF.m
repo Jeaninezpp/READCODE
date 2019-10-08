@@ -20,10 +20,10 @@ for vIndex=1:vN
     TempvData=[];TempvData=X{vIndex};%TempvData存放的是当前索引的单视图
     TempD=size(TempvData,2);%size(X,2)返回X数组的列数，如果是size(X,1)则返回X数组的行数．所以TempD是当前视图的列数，di
     V{vIndex}=rand(TempD,k);% V是　di * k　的
-    TempNorData=[];TempNorData=NormalizeFea(TempvData); %NormalizeFea input n*d,输入単视图数据
-    Xnor{vIndex}=TempNorData;
-    ConsenX=[ConsenX,TempNorData];
-    Sv = constructW(TempNorData,options);
+    TempNorData=[];TempNorData=NormalizeFea(TempvData); %NormalizeFea input n*d,输入単视图数据，进行正则化
+    Xnor{vIndex}=TempNorData;%赋值给Xnor的第vIndex个元素
+    ConsenX=[ConsenX,TempNorData];%将TempNorData赋值给ConsenX
+    Sv = constructW(TempNorData,options);%构建相似度矩阵
     D_valuev = sum(Sv,2);
     Dv = spdiags(D_valuev,0,N,N);
     Lv = Dv-Sv;

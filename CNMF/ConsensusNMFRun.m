@@ -7,9 +7,9 @@ load(dataName);% 从dataName中加载数据,如果是MAT文件，会把变量加
 TotalSampleNo=length(Y); %% Labels of samples
 %% LPP Paras
 options = [];
-options.NeighborMode = 'KNN';%%%%%?哪里用到的K近邻呢？
+options.NeighborMode = 'KNN';%%%%%?哪里用到的K近邻呢?　在constructW中用到
 options.k = 5;
-options.WeightMode = 'HeatKernel';%%%%%热核特征HKS??
+options.WeightMode = 'HeatKernel';%%%%%热核特征HKS??　在constructW中用到
 options.t = 10;
 %%
 [U,V,Ustar,alpha,beta,gamma,ConX,obj]=ConsensusNMF(X,TotalSampleNo,kmeansK,ViewN,options);
