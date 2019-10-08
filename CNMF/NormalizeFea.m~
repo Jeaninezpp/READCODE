@@ -15,17 +15,13 @@ if ~exist('row','var')
 end
 
 if row%row为１
-    nSmp = size(fea,1);%fea的行数
-    feaNorm = max(1e-14,full(sum(fea.^2,2)));%fea:n*d,feaNorm:n*1
-    %fea.^2对fea矩阵逐元素平方
-    %sum(fea.^2,2)i.e.sum(X,2)求行和
-    %full稀疏矩阵转化为完整矩阵
-    %max(1e-14,...)截断在1e-14,小于它的都用它代替
-    fea = spdiags(feaNorm.^-.5,0,nSmp,nSmp)*fea;%其实实现的就是每个元素除以每行的平方和的平方根
+    nSmp = size(fea,1);%fea的行
+    feaNorm = max(1e-14,full(sum(fea.^2,2)));%fea.^2对fea矩阵逐元素平方／／sum(fea.^2,2)i.e.sum(X,2)求行和／／full稀疏矩阵转化为完整矩阵
+    fea = spdiags(feaNorm.^-.5,0,nSmp,nSmp)*fea;
 else%row为０
-    nSmp = size(fea,2);%fea的列数
+    nSmp = size(fea,2);%fea的列
     feaNorm = max(1e-14,full(sum(fea.^2,1))');
-    fea = fea*spdiags(feaNorm.^-.5,0,nSmp,nSmp);%每个元素除以每列的平方和的平方根
+    fea = fea*spdiags(feaNorm.^-.5,0,nSmp,nSmp);
 end
             
 return;

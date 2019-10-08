@@ -1,3 +1,8 @@
+%ConsensusNMF
+%InPut    :
+%OutPut  :
+%Function:
+%
 %function格式：function [返回值１,返回值2,...]=fun_name(输入值1,输入值2,....)
 function [U,V,Ustar,alpha,beta,gamma,ConsenX,obj]=ConsensusNMF(X,N,k,vN,options)
 %%initial U,V,alpha,beta,gamma
@@ -5,16 +10,17 @@ r1=2;r2=2;r3=2;%r1,r2,r3是alpha,beta,gamma的指数
 tau=1e8;%tau是优化U的时候的参数
 alpha=cell(1,vN);beta=cell(1,vN);gamma=cell(1,vN);%alpha,beta,gamma是权衡参数
 gv=cell(1,vN);hv=cell(1,vN);fv=cell(1,vN);% cell_array=cell(m,n)创建m*n的元胞数组
-U=cell(1,vN);V=cell(1,vN);L=cell(1,vN);Xnor=cell(1,vN);%%%%%%%%%%%%%%%%%%Xnor是啥？
-Ustar=rand(N,k);%%%%%%%随机初始化一致矩阵？？
+U=cell(1,vN);V=cell(1,vN);L=cell(1,vN);Xnor=cell(1,vN);%%%%%%%%%%%%%%%%%%  Xnor是啥？
+Ustar=rand(N,k);%%%%%%%一致矩阵是随机初始化的？？？
 MaxIter=10;
 ConsenX=[];
 for vIndex=1:vN
-    alpha{vIndex}=1/vN;beta{vIndex}=1/vN;gamma{vIndex}=1/vN;
-    U{vIndex}=rand(N,k);
-    TempvData=[];TempvData=X{vIndex};TempD=size(TempvData,2);
-    V{vIndex}=rand(TempD,k);
-    TempNorData=[];TempNorData=NormalizeFea(TempvData); %NormalizeFea input n*d
+    alpha{vIndex}=1/vN;beta{vIndex}=1/vN;gamma{vIndex}=1/vN; %对每个视图的alpha,beta,gamma进行初始化，初始值为1/vN
+    U{vIndex}=rand(N,k);        %U是　N*k　的
+    TempvData=[];TempvData=X{vIndex};%TempvData存放的是当前索引的单视图
+    TempD=size(TempvData,2);%size(X,2)返回X数组的列数，如果是size(X,1)则返回X数组的行数．所以TempD是当前视图的列数，di
+    V{vIndex}=rand(TempD,k);% V是　di * k　的
+    TempNorData=[];TempNorData=NormalizeFea(TempvData); %NormalizeFea input n*d,输入単视图数据
     Xnor{vIndex}=TempNorData;
     ConsenX=[ConsenX,TempNorData];
     Sv = constructW(TempNorData,options);
