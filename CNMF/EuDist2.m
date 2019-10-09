@@ -22,12 +22,11 @@ function D = EuDist2(fea_a,fea_b,bSqrt)
 %
 %   Written by Deng Cai (dengcai AT gmail.com)
 
-
-if ~exist('bSqrt','var')
+if ~exist('bSqrt','var')%判断bSqrt这个变量是否存在，不存在默认为１
     bSqrt = 1;
 end
 
-if (~exist('fea_b','var')) || isempty(fea_b)
+if (~exist('fea_b','var')) || isempty(fea_b)%或，如果第一个满足就不会计算第二个，如果没有fea_b这个变量，或者变量为空，就计算自己与
     aa = sum(fea_a.*fea_a,2);
     ab = fea_a*fea_a';
     

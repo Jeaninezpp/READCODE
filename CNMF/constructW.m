@@ -158,7 +158,7 @@ switch lower(options.WeightMode)%判断是binary \ heatkernel \ cosine
     case {lower('HeatKernel')}
         if ~isfield(options,'t')%如果t没有指定
             nSmp = size(fea,1);
-            if nSmp > 3000
+            if nSmp > 3000%如果大于3000个样本，就挑选3000个，少于3000就直接计算
                 D = EuDist2(fea(randsample(nSmp,3000),:));
                 %randsample(nSmp,3000)产生3000个不相同的数，3000*1
                 %fea(3000*1,:)按照这3000个数对fea进行重新排列
