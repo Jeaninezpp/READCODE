@@ -156,16 +156,17 @@ switch lower(options.WeightMode)%判断是binary \ heatkernel \ cosine
     case {lower('Binary')}
         bBinary = 1; 
     case {lower('HeatKernel')}
-        if ~isfield(options,'t')%如果t没有指定
+        if ~isfield(options,'t')%如果结构体里没有t
             nSmp = size(fea,1);
             if nSmp > 3000%如果大于3000个样本，就挑选3000个，少于3000就直接计算
                 D = EuDist2(fea(randsample(nSmp,3000),:));
                 %randsample(nSmp,3000)产生3000个不相同的数，3000*1
                 %fea(3000*1,:)按照这3000个数对fea进行重新排列
             else
-                D = EuDist2(fea);
+                D = EuDist2(fea);% D是一个nSmp*nSmp的距离矩阵
             end
-            options.t = mean(mean(D));
+            options.t = mean(mean(D));%mean(矩阵)返回矩阵列向量的平均值，返回的是一个行向量．mean(向量)返回各元素的平均值
+            %所以options.t中是距离之和/(n*n)=平均距离
         end
     case {lower('Cosine')}
         bCosine = 1;
@@ -184,12 +185,12 @@ end
 if isfield(options,'gnd') 
     nSmp = length(options.gnd);
 else
-    nSmp = size(fea,1);
+    nSmp = size(fea,1);%fea的行数
 end
 maxM = 62500000; %500M
-BlockSize = floor(maxM/(nSmp*3));
+BlockSize = floor(maxM/(nSmp*3));%%%%%%%%%%%%%%%%%%%%%干嘛呢？？？
 
-
+%===================================================Supervised，先不看
 if strcmpi(options.NeighborMode,'Supervised')
     Label = unique(options.gnd);
     nLabel = length(Label);
@@ -327,9 +328,10 @@ if bCosine && ~options.bNormalized
     Normfea = NormalizeFea(fea);
 end
 
+%==============================================KNN
 if strcmpi(options.NeighborMode,'KNN') && (options.k > 0)
-    if ~(bCosine && options.bNormalized)
-        G = zeros(nSmp*(options.k+1),3);
+    if ~(bCosine && options.bNormalized)%bCosine和bNormalized有一个为0
+        G = zeros(nSmp*(options.k+1),3);%生成(k+1)nSmp行3列的零矩阵G
         for i = 1:ceil(nSmp/BlockSize)
             if i == ceil(nSmp/BlockSize)
                 smpIdx = (i-1)*BlockSize+1:nSmp;
@@ -508,7 +510,7 @@ switch lower(options.WeightMode)
         error('Binary weight can not be used for complete graph!');
     case {lower('HeatKernel')}
         W = EuDist2(fea,[],0);
-        W = exp(-W/(2*options.t^2));
+        W = exp(-W/(2*options.t^2));%W_ij = exp(-norm(x_i - x_j)/2t^2).
     case {lower('Cosine')}
         W = full(Normfea*Normfea');
     otherwise

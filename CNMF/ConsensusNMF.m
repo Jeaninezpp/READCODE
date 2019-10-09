@@ -1,9 +1,10 @@
 %ConsensusNMF
-%InPut    :
-%OutPut  :
-%Function:
-%
-%function格式：function [返回值１,返回值2,...]=fun_name(输入值1,输入值2,....)
+%InPut    :X,N,k,vN,options
+%OutPut  :U,V,Ustar,alpha,beta,gamma,ConsenX,obj
+%Function:更新u,v,u*,alpha,beta,gamma,ConsenX,obj
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% function格式：function [返回值１,返回值2,...]=fun_name(输入值1,输入值2,....)
 function [U,V,Ustar,alpha,beta,gamma,ConsenX,obj]=ConsensusNMF(X,N,k,vN,options)
 %%initial U,V,alpha,beta,gamma
 r1=2;r2=2;r3=2;%r1,r2,r3是alpha,beta,gamma的指数
@@ -14,20 +15,21 @@ U=cell(1,vN);V=cell(1,vN);L=cell(1,vN);Xnor=cell(1,vN);%%%%%%%%%%%%%%%%%%  Xnor�
 Ustar=rand(N,k);%%%%%%%一致矩阵是随机初始化的？？？
 MaxIter=10;
 ConsenX=[];
-for vIndex=1:vN
+for vIndex=1:vN%得到每个视图的数据，正则化数据，相似度矩阵，拉普拉斯矩阵，以及所有视图拼在一起的一直矩阵
     alpha{vIndex}=1/vN;beta{vIndex}=1/vN;gamma{vIndex}=1/vN; %对每个视图的alpha,beta,gamma进行初始化，初始值为1/vN
     U{vIndex}=rand(N,k);        %U是　N*k　的
     TempvData=[];TempvData=X{vIndex};%TempvData存放的是当前索引的单视图
     TempD=size(TempvData,2);%size(X,2)返回X数组的列数，如果是size(X,1)则返回X数组的行数．所以TempD是当前视图的列数，di
     V{vIndex}=rand(TempD,k);% V是　di * k　的
-    TempNorData=[];TempNorData=NormalizeFea(TempvData); %NormalizeFea input n*d,输入単视图数据，进行正则化
+    TempNorData=[];
+    TempNorData=NormalizeFea(TempvData); %NormalizeFea input n*d,输入単视图数据，进行正则化．输出正则化后的数据．
     Xnor{vIndex}=TempNorData;%赋值给Xnor的第vIndex个元素
-    ConsenX=[ConsenX,TempNorData];%将TempNorData赋值给ConsenX
+    ConsenX=[ConsenX,TempNorData];%将TempNorData拼接在ConsenX后
     Sv = constructW(TempNorData,options);%构建相似度矩阵
-    D_valuev = sum(Sv,2);
-    Dv = spdiags(D_valuev,0,N,N);
-    Lv = Dv-Sv;
-    L{vIndex}=((full(Dv))^(-0.5))*Lv*((full(Dv))^(-0.5));
+    D_valuev = sum(Sv,2);%对Sv求行和就是D的对角线元素
+    Dv = spdiags(D_valuev,0,N,N);%N是TotalSampleNumber,D是N*N的矩阵，把D_valuev的值放在对角线位置
+    Lv = Dv-Sv;%拉普拉斯矩阵
+    L{vIndex}=((full(Dv))^(-0.5))*Lv*((full(Dv))^(-0.5));%正则化拉普拉斯
     t=3;
 end
 obj=zeros(1,MaxIter);
