@@ -1,8 +1,10 @@
 clear all;
 clc;
-dataName=[dataPath datasetName{dataIndex} '.mat'];%自行设置
-kmeansK=datasetClassNo(dataIndex); %% Clusters of samples
-ViewN=ViewNO(dataIndex);  % Number of views
+% dataName=[dataPath datasetName{dataIndex} '.mat'];%自行设置
+dataName=['/home/zpp/Documents/dataset/MultiView/' 'handwritten' '.mat'];%自行设置
+
+kmeansK=max(Y); %% Clusters of samples
+ViewN=length(feas);  % Number of views
 load(dataName);% 从dataName中加载数据,如果是MAT文件，会把变量加载到工作区．如果是ASCII，创建双精度数组．
 TotalSampleNo=length(Y); %% Labels of samples
 %% LPP Paras
