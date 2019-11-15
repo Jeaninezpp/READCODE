@@ -1,4 +1,5 @@
-% construct similarity matrix with probabilistic k-nearest neighbors. It is a parameter free, distance consistent similarity.
+% construct similarity matrix with probabilistic k-nearest neighbors. 
+%It is a parameter free, distance consistent similarity.
 function W = constructW_PKN(X, k, issymmetric)
 % X: each column is a data point
 % k: number of neighbors

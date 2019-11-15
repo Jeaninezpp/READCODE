@@ -1,0 +1,208 @@
+diary on
+run
+if system_dependent('IsDebugMode')==1, dbstep; end
+size(data{1})
+
+ans =
+
+         116        1991
+
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+Starting parallel pool (parpool) using the 'local' profile ...
+connected to 8 workers.
+d=distance(Fv,n,1);
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+run
+load('bbcsport_seg14of4.mat')
+clear
+load('bbcsport.mat')
+run
+{Reference to non-existent field 'data'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('run', '/home/zpp/Documents/project/READCODE/mPAC/run.m', 2)" style="font-weight:bold">run</a> (<a href="matlab: opentoline('/home/zpp/Documents/project/READCODE/mPAC/run.m',2,0)">line 2</a>)
+data=f.data;
+} 
+run
+clear
+if system_dependent('IsDebugMode')==1, dbquit; end
+run
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+clear
+run
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+clear
+run
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+clear
+run
+if system_dependent('IsDebugMode')==1, dbquit; end
+clear
+run
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+IdleTimeout has been reached.
+Parallel pool using the 'local' profile is shutting down.
+eig1
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('eig1', '/home/zpp/Documents/project/READCODE/mPAC/eig1.m', 6)" style="font-weight:bold">eig1</a> (<a href="matlab: opentoline('/home/zpp/Documents/project/READCODE/mPAC/eig1.m',6,0)">line 6</a>)
+    c = size(A,1);
+} 
+run
+{Reference to non-existent field 'X'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('run', '/home/zpp/Documents/project/READCODE/mPAC/run.m', 2)" style="font-weight:bold">run</a> (<a href="matlab: opentoline('/home/zpp/Documents/project/READCODE/mPAC/run.m',2,0)">line 2</a>)
+data=f.X';% data is a view*1 dim cell
+} 
+run
+{Reference to non-existent field 'X'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('run', '/home/zpp/Documents/project/READCODE/mPAC/run.m', 2)" style="font-weight:bold">run</a> (<a href="matlab: opentoline('/home/zpp/Documents/project/READCODE/mPAC/run.m',2,0)">line 2</a>)
+data=f.X;% data is a view*1 dim cell
+} 
+run
+if system_dependent('IsDebugMode')==1, dbquit; end
+run
+if system_dependent('IsDebugMode')==1, dbquit; end
+run
+max(A,A');
+help max
+ <strong>max</strong>    Largest component.
+    For vectors, <strong>max</strong>(X) is the largest element in X. For matrices,
+    <strong>max</strong>(X) is a row vector containing the maximum element from each
+    column. For N-D arrays, <strong>max</strong>(X) operates along the first
+    non-singleton dimension.
+ 
+    [Y,I] = <strong>max</strong>(X) returns the indices of the maximum values in vector I.
+    If the values along the first non-singleton dimension contain more
+    than one maximal element, the index of the first one is returned.
+ 
+    <strong>max</strong>(X,Y) returns an array with the largest elements taken from X or Y.
+    X and Y must have compatible sizes. In the simplest cases, they can be
+    the same size or one can be a scalar. Two inputs have compatible sizes
+    if, for every dimension, the dimension sizes of the inputs are either
+    the same or one of them is 1.
+ 
+    [Y,I] = <strong>max</strong>(X,[],DIM) operates along the dimension DIM. 
+ 
+    When X is complex, the maximum is computed using the magnitude
+    <strong>max</strong>(ABS(X)). In the case of equal magnitude elements, then the phase
+    angle <strong>max</strong>(ANGLE(X)) is used.
+ 
+    <strong>max</strong>(...,NANFLAG) specifies how NaN (Not-A-Number) values are treated.
+    NANFLAG can be:
+    'omitnan'    - Ignores all NaN values and returns the maximum of the 
+                   non-NaN elements.  If all elements are NaN, then the
+                   first one is returned.
+    'includenan' - Returns NaN if there is any NaN value.  The index points
+                   to the first NaN element.
+    Default is 'omitnan'.
+ 
+    Example: 
+        X = [2 8 4; 7 3 9]
+        max(X,[],1)
+        max(X,[],2)
+        max(X,5)
+ 
+    See also <a href="matlab:help min">min</a>, <a href="matlab:help cummax">cummax</a>, <a href="matlab:help median">median</a>, <a href="matlab:help mean">mean</a>, <a href="matlab:help sort">sort</a>.
+
+    <a href="matlab:doc max">Reference page for max</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('max')">Other functions named max</a>
+
+X = [2 8 4; 7 3 9]
+
+X =
+
+     2     8     4
+     7     3     9
+
+max(X,5);
+max(X,5)
+
+ans =
+
+     5     8     5
+     7     5     9
+
+max(A,A');
+A==A';
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+dd=sort(d,'descend');;
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+sum(Lv,2);
+sum(Sv,2);
+sum(Sv,1);
+[a,b]eig(A);
+ [a,b]eig(A);
+      ↑
+{Error: Unexpected MATLAB expression.
+} 
+[a,b]=eig(A);
+{Undefined function or variable 'A'.
+} 
+[a,b]=eig(Lv);
+run
+{Reference to non-existent field 'data'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('run', '/home/zpp/Documents/project/READCODE/mPAC/run.m', 3)" style="font-weight:bold">run</a> (<a href="matlab: opentoline('/home/zpp/Documents/project/READCODE/mPAC/run.m',3,0)">line 3</a>)
+data=f.data;% data is a view*1 dim cell
+} 
+run
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+sum(Lv,2);
+sum(Sv,2);
+if system_dependent('IsDebugMode')==1, dbquit; end
+run

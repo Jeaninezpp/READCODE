@@ -1,4 +1,5 @@
 function [X, out]= solveF(X,fun,opts,varargin)
+% X: Fv
 if isempty(X)
     error('input X is an empty matrix');
 else
